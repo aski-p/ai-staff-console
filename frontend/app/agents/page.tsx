@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState } from "react";
 import { agentsApi, del as httpDel } from "../lib/api";
 import type { Agent } from "../lib/types";

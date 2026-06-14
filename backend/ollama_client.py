@@ -4,7 +4,8 @@ from datetime import timedelta
 import httpx
 
 
-OLLAMA_BASE = "http://host.docker.internal:11434"
+import os
+OLLAMA_BASE = os.environ.get("OLLAMA_URL", "http://host.docker.internal:11434")
 
 
 def generate_response(model_name: str, system_prompt: str, user_prompt: str) -> str:

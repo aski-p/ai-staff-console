@@ -1,0 +1,11 @@
+[project]
+args = { OLLAMA_URL = "http://localhost:11434" }
+
+[build]
+builder = "NIXPACKS"
+
+[deploy]
+healthcheckPath = "/health"
+healthcheckInterval = 300
+restartPolicyType = "on-failure"
+restartPolicyMaxRetries = 10
