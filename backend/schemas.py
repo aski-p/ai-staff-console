@@ -12,6 +12,7 @@ class AgentCreate(BaseModel):
     description: str = ""
     system_prompt: str = ""
     model_name: str = "qwen3-coder"
+    telegram_name: Optional[str] = None  # Telegram 호출용 별명 (ex: 김팀장)
     is_active: bool = True
     requires_approval: bool = False
 
@@ -22,6 +23,7 @@ class AgentUpdate(BaseModel):
     description: Optional[str] = None
     system_prompt: Optional[str] = None
     model_name: Optional[str] = None
+    telegram_name: Optional[str] = None
     is_active: Optional[bool] = None
     requires_approval: Optional[bool] = None
 
@@ -36,6 +38,7 @@ class AgentResponse(BaseModel):
     description: str
     system_prompt: str
     model_name: str
+    telegram_name: Optional[str] = None
     is_active: bool
     requires_approval: bool
     created_at: datetime

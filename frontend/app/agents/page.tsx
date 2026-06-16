@@ -54,6 +54,7 @@ export default function AgentsPage() {
                 <option value="qwen3.6:27b">qwen3.6:27b</option>
               </select>
             </div>
+            <div className="form-group"><label>텔레그램 별명 (선택)</label><input value={newAgent.telegram_name || ""} onChange={e => setNewAgent({...newAgent, telegram_name: e.target.value})} placeholder="김팀장" /></div>
             <div style={{display:"flex", gap:"1rem"}}>
               <label className="checkbox-row"><input type="checkbox" checked={newAgent.is_active} onChange={e => setNewAgent({...newAgent, is_active: e.target.checked})} /> 활성</label>
               <label className="checkbox-row"><input type="checkbox" checked={newAgent.requires_approval} onChange={e => setNewAgent({...newAgent, requires_approval: e.target.checked})} /> 승인 필요</label>

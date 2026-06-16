@@ -58,5 +58,11 @@ export const tasksApi = {
   reject: (id: number) => post<any>(`tasks/${id}/reject`, {}),
 };
 
-export const logsApi = { list: () => get<any[]>("logs") };
-export const dashboardApi = { stats: () => get<any>("dashboard") };
+export const logsApi = { list: () => get<any[]>("/logs") };
+export const dashboardApi = { stats: () => get<any>("/dashboard") };
+
+export const settingsApi = {
+  getTelegram: () => get<any>("/settings/telegram"),
+  setTelegram: (d: any) => post<any>("/settings/telegram", d),
+  stopTelegram: () => post<any>("/settings/telegram/stop", {}),
+};

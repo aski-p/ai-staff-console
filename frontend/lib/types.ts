@@ -1,7 +1,7 @@
 export interface Agent {
   id: number; name: string; role: string; description: string;
-  system_prompt: string; model_name: string; is_active: boolean;
-  requires_approval: boolean; created_at: string; deleted_at: string | null;
+  system_prompt: string; model_name: string; telegram_name: string | null;
+  is_active: boolean; requires_approval: boolean; created_at: string; deleted_at: string | null;
 }
 
 export interface Permission {

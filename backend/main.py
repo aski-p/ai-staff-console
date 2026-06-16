@@ -13,6 +13,7 @@ from models import Agent, Permission, RagCollection, Task, Log, Base
 import ollama_client as ollama
 from agents import seed_db
 import schemas
+import telegram_bot
 
 # ── 앱 초기화 ──────────────────────────────────────
 Base.metadata.create_all(bind=engine)
@@ -33,10 +34,38 @@ app.add_middleware(
 )
 
 
-# ── 헬스체크 ───────────────────────────────────────
+# ── Health 체크 ───────────────────────────────────────
 @app.get("/health")
 def health():
     return {"status": "ok", "service": "ai-staff-console"}
+
+
+# ── Settings: Telegram ────────────────────────────────
+class TelegramConfigRequest(schemas.BaseModel):
+    bot_token: str
+    active: bool = True
+
+@app.get("/settings/telegram")
+def get_telegram_settings():
+    return telegram_bot.get_config()
+
+@app.post("/settings/telegram")
+async def set_telegram_settings(req: dict):
+    """Bot Token 설정 + 활성/비활성 토글"""
+    try:
+        await telegram_bot.configure(
+            bot_token=req.get("bot_token", ""),
+            active=req.get("active", False),
+        )
+    except Exception as e:
+        raise HTTPException(400, f"Telegram 설정 오류: {e}")
+    return {"message": "Telegram 설정이 적용되었습니다.", "config": telegram_bot.get_config()}
+
+@app.post("/settings/telegram/stop")
+async def stop_telegram():
+    """Telegram Polling 중지"""
+    await telegram_bot.stop_polling()
+    return {"message": "Telegram polling이 중지되었습니다."}
 
 
 # ── 대시보드 요약 ──────────────────────────────────

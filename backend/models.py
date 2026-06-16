@@ -16,6 +16,7 @@ class Agent(Base):
     description = Column(Text, default="")
     system_prompt = Column(Text, default="")
     model_name = Column(String(100), default="qwen3-coder")
+    telegram_name = Column(String(100), nullable=True, default=None)  # Telegram에서 호출용 별명 (예: 김팀장)
     is_active = Column(Boolean, default=True)
     requires_approval = Column(Boolean, default=False)
     created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))

@@ -8,3 +8,5 @@ data/
 *.pyc
 .venv/
 venv/
+telegram_config.json
+railway.env

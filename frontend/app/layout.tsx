@@ -12,6 +12,7 @@ const navItems = [
   { label: "RAG 컬렉션", path: "/rag" },
   { label: "작업 지시", path: "/tasks" },
   { label: "작업 로그", path: "/logs" },
+  { label: "⚙️ 설정", path: "/settings" },
 ];
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
