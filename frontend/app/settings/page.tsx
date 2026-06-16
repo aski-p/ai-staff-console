@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { settingsApi } from "../lib/api";
+import { settingsApi } from "@/app/lib/api";
 
 export default function SettingsPage() {
   const [token, setToken] = useState("");

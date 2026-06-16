@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
-import { ragApi } from "../lib/api";
-import type { RagCollection } from "../lib/types";
+import { ragApi } from "@/app/lib/api";
+import type { RagCollection } from "@/app/lib/types";
 
 export default function RagPage() {
   const [rags, setRags] = useState<RagCollection[]>([]);

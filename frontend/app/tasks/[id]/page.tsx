@@ -1,9 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import { tasksApi } from "../lib/api";
-import type { Task } from "../lib/types";
-import { STATUS_LABELS } from "../lib/types";
+import { tasksApi } from "@/app/lib/api";
+import type { Task } from "@/app/lib/types";
+import { STATUS_LABELS } from "@/app/lib/types";
 
 export default function TaskDetailPage() {
   const { id: routeId } = useParams();

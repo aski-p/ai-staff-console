@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import { agentsApi, permsApi } from "../lib/api";
-import type { Agent, Permission } from "../lib/types";
+import { agentsApi, permsApi } from "@/app/lib/api";
+import type { Agent, Permission } from "@/app/lib/types";
 
 export default function AgentDetailPage() {
   const { id: routeId } = useParams();
@@ -31,15 +31,15 @@ export default function AgentDetailPage() {
 
   if (!agent || !perms) return <div className="empty-state">로딩 중...</div>;
 
-  const permsList = [
-    { key: "can_read_files" as any, label: "파일 읽기", danger: false },
-    { key: "can_write_files" as any, label: "파일 쓰기", danger: true },
-    { key: "can_execute_shell" as any, label: "쉘 실행", danger: true },
-    { key: "can_use_internet" as any, label: "인터넷 접근", danger: true },
-    { key: "can_access_medical_rag" as any, label: "의료 RAG 접근", danger: false },
-    { key: "can_access_insurance_rag" as any, label: "보험 RAG 접근", danger: false },
-    { key: "can_access_dailywon_rag" as any, label: "DailyWon RAG 접근", danger: false },
-    { key: "can_access_code_rag" as any, label: "코드 RAG 접근", danger: false },
+  const permsList: Array<{ key: keyof Permission; label: string; danger: boolean }> = [
+    { key: "can_read_files", label: "파일 읽기", danger: false },
+    { key: "can_write_files", label: "파일 쓰기", danger: true },
+    { key: "can_execute_shell", label: "쉘 실행", danger: true },
+    { key: "can_use_internet", label: "인터넷 접근", danger: true },
+    { key: "can_access_medical_rag", label: "의료 RAG 접근", danger: false },
+    { key: "can_access_insurance_rag", label: "보험 RAG 접근", danger: false },
+    { key: "can_access_dailywon_rag", label: "데일리원 RAG 접근", danger: false },
+    { key: "can_access_code_rag", label: "코드 RAG 접근", danger: false },
   ];
 
   return (
@@ -79,7 +79,7 @@ export default function AgentDetailPage() {
       <div className="card">
         {permsList.map(p => (
           <label key={p.key} className={`checkbox-row ${p.danger ? "danger-perm" : ""}`}>
-            <input type="checkbox" checked={perms[p.key]} onChange={e => updatePerm(p.key, e.target.checked)} />
+            <input type="checkbox" checked={Boolean(perms[p.key])} onChange={e => updatePerm(p.key, e.target.checked)} />
             {p.label} {p.danger && "⚠️"}
           </label>
         ))}

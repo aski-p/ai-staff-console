@@ -1,12 +1,12 @@
 "use client";
 import { useEffect, useState } from "react";
-import { agentsApi, del as httpDel } from "../lib/api";
-import type { Agent } from "../lib/types";
+import { agentsApi, del as httpDel } from "@/app/lib/api";
+import type { Agent } from "@/app/lib/types";
 
 export default function AgentsPage() {
   const [agents, setAgents] = useState<Agent[]>([]);
   const [showForm, setShowForm] = useState(false);
-  const [newAgent, setNewAgent] = useState({ name: "", role: "", description: "", system_prompt: "너는 유능한 AI 어시스턴트다.", model_name: "qwen3-coder", is_active: true, requires_approval: false });
+  const [newAgent, setNewAgent] = useState({ name: "", role: "", description: "", system_prompt: "너는 유능한 AI 어시스턴트다.", model_name: "qwen3-coder", telegram_name: "", is_active: true, requires_approval: false });
 
   useEffect(() => { loadAgents(); }, []);
 

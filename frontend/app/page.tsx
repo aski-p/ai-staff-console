@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
-import { dashboardApi, agentsApi, tasksApi } from "../lib/api";
-import type { DashboardStats, Agent, Task } from "../lib/types";
-import { STATUS_LABELS } from "../lib/types";
+import { dashboardApi, agentsApi, tasksApi } from "@/app/lib/api";
+import type { DashboardStats, Agent, Task } from "@/app/lib/types";
+import { STATUS_LABELS } from "@/app/lib/types";
 
 export default function DashboardPage() {
   const [stats, setStats] = useState<DashboardStats | null>(null);

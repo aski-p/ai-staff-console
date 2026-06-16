@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { logsApi } from "../lib/api";
+import { logsApi } from "@/app/lib/api";
 
 export default function LogsPage() {
   const [logs, setLogs] = useState<any[]>([]);

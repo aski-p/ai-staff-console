@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { tasksApi, agentsApi, ragApi } from "../lib/api";
-import type { Agent, RagCollection } from "../lib/types";
+import { tasksApi, agentsApi, ragApi } from "@/app/lib/api";
+import type { Agent, RagCollection } from "@/app/lib/types";
 
 export default function NewTaskPage() {
   const router = useRouter();

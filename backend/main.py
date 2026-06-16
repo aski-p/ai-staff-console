@@ -7,6 +7,7 @@ from typing import Optional
 from fastapi import FastAPI, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
+from pydantic import BaseModel
 
 from database import init_db, get_db, engine
 from models import Agent, Permission, RagCollection, Task, Log, Base
@@ -41,7 +42,7 @@ def health():
 
 
 # ── Settings: Telegram ────────────────────────────────
-class TelegramConfigRequest(schemas.BaseModel):
+class TelegramConfigRequest(BaseModel):
     bot_token: str
     active: bool = True
 

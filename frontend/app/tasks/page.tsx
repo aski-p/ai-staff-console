@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
-import { tasksApi, agentsApi } from "../lib/api";
-import type { Task, Agent } from "../lib/types";
-import { STATUS_LABELS } from "../lib/types";
+import { tasksApi, agentsApi } from "@/app/lib/api";
+import type { Task, Agent } from "@/app/lib/types";
+import { STATUS_LABELS } from "@/app/lib/types";
 
 export default function TasksPage() {
   const [tasks, setTasks] = useState<Task[]>([]);
